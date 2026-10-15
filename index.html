@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ton site avec ChatGPT et GitHub en 2 minutes</title>
+<style>
+:root{--a:#ff4fd8;--mu:#8c91b0;--bg:#06060d;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+body{background:#000;color:#f1f2ff;font-family:"Space Grotesk","Segoe UI",system-ui,sans-serif;display:flex;justify-content:center;padding:12px}
+#w{width:min(100%,1100px);display:flex;flex-direction:column;gap:10px}
+#w:fullscreen{width:100%;max-width:none;background:#000;justify-content:center;align-items:center;padding:0}
+#w:fullscreen #st{width:min(100vw,177vh)}
+#st{width:100%;aspect-ratio:16/9;container-type:inline-size;position:relative;overflow:hidden;border-radius:14px;border:1px solid #24243d;background:radial-gradient(55cqw 40cqw at 90% -5%,color-mix(in srgb,var(--a) 28%,transparent),transparent 65%),radial-gradient(45cqw 35cqw at 0 105%,#0a2f55,transparent 65%),var(--bg);transition:--a .6s}
+#st::before{content:"";position:absolute;inset:0;background:linear-gradient(#ffffff0a 1px,transparent 1px) 0 0/4cqw 4cqw,linear-gradient(90deg,#ffffff0a 1px,transparent 1px) 0 0/4cqw 4cqw;-webkit-mask:radial-gradient(70% 80% at 50% 50%,#000,transparent);mask:radial-gradient(70% 80% at 50% 50%,#000,transparent)}
+.top{position:absolute;top:2.2cqw;left:3cqw;right:3cqw;display:flex;justify-content:space-between;align-items:center;font-size:1.5cqw;color:var(--mu)}
+.top b{display:flex;gap:.8cqw;align-items:center;color:#fff;font-weight:600;letter-spacing:.02em}
+.top svg{width:2.4cqw;stroke:var(--a)}
+#chip{border:1px solid var(--a);color:var(--a);border-radius:99cqw;padding:.4cqw 1.6cqw;box-shadow:0 0 1.5cqw color-mix(in srgb,var(--a) 40%,transparent)}
+svg{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+svg path{stroke-dasharray:1;stroke-dashoffset:1;animation:dr 1.3s .15s ease forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+#L{position:absolute;left:3cqw;top:8.5cqw;width:41cqw;animation:in .5s both}
+@keyframes in{from{opacity:0;transform:translateX(-2cqw)}}
+.n{color:var(--a);font-size:1.6cqw;margin-bottom:1.2cqw}
+.hd{display:flex;gap:1.6cqw;align-items:center;margin-bottom:2.4cqw}
+.bdg{flex:none;width:7.5cqw;height:7.5cqw;border:1.5px solid var(--a);border-radius:2cqw;display:grid;place-items:center;color:var(--a);box-shadow:0 0 2.5cqw color-mix(in srgb,var(--a) 45%,transparent),inset 0 0 1.5cqw color-mix(in srgb,var(--a) 20%,transparent)}
+.bdg svg{width:4.4cqw}
+h1{font-size:3.5cqw;line-height:1.08;font-weight:700;letter-spacing:-.02em}
+ol{list-style:none;padding:0;display:flex;flex-direction:column;gap:1.1cqw}
+li{display:flex;gap:1.2cqw;align-items:flex-start;font-size:1.85cqw;line-height:1.3;color:#5d6283;transition:.4s}
+li i{flex:none;width:3cqw;height:3cqw;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:1.4cqw;margin-top:-.2cqw}
+li[data-s=on]{color:#fff;text-shadow:0 0 1.2cqw color-mix(in srgb,var(--a) 70%,transparent)}
+li[data-s=on] i{color:var(--a);box-shadow:0 0 1.2cqw var(--a)}
+li[data-s=d]{color:#8c91b0}
+li[data-s=d] i{color:var(--a)}
+#R{position:absolute;right:3cqw;top:8.5cqw;width:47cqw;animation:fi .6s both}
+@keyframes fi{from{opacity:0}}
+.win{border:1px solid color-mix(in srgb,var(--a) 55%,#222);border-radius:1.4cqw;background:#0c0c1ccc;box-shadow:0 0 4cqw color-mix(in srgb,var(--a) 22%,transparent)}
+.tb{display:flex;gap:.7cqw;align-items:center;padding:1.1cqw 1.5cqw;border-bottom:1px solid #26263f}
+.tb span{width:1.1cqw;height:1.1cqw;border:1px solid #4a4e72;border-radius:50%}
+.tb em{margin-left:1.2cqw;flex:1;font-style:normal;font-size:1.35cqw;color:var(--mu);border:1px solid #2c2c48;border-radius:99cqw;padding:.45cqw 1.4cqw}
+.bd{padding:2cqw;display:flex;flex-direction:column;gap:1.2cqw}
+.e{display:flex;align-items:center;gap:1cqw;border:1px solid #2e2e4c;border-radius:1cqw;padding:1.1cqw 1.5cqw;font-size:1.6cqw;color:#c8cbe6;transition:.35s}
+.e svg{width:2.2cqw;flex:none}
+.b{justify-content:center;font-weight:600;color:var(--a);border-color:color-mix(in srgb,var(--a) 50%,#222)}
+.i{flex-direction:column;align-items:flex-start;gap:.3cqw}
+.i small{color:var(--mu);font-size:1.2cqw}
+.i b{font-weight:500;color:#fff}
+.t{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.4cqw;color:#7f86b3;min-height:6cqw}
+.bx{width:2cqw;height:2cqw;border:1.5px solid #5d6283;border-radius:.5cqw;display:grid;place-items:center;font-size:1.4cqw;color:var(--a)}
+.e[data-s=on]{border-color:var(--a);color:#fff;box-shadow:0 0 2cqw color-mix(in srgb,var(--a) 55%,transparent);transform:scale(1.025)}
+.e[data-s=d]{border-color:color-mix(in srgb,var(--a) 35%,#222)}
+.k[data-s=on] .bx::after,.k[data-s=d] .bx::after{content:"✓"}
+.k[data-s=on] .bx,.k[data-s=d] .bx{border-color:var(--a)}
+.big{display:grid;place-items:center;height:42cqw;color:var(--a)}
+.big svg{width:26cqw;filter:drop-shadow(0 0 2.5cqw var(--a));animation:fl 4s 1.5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-1.5cqw)}}
+#cu{position:absolute;width:3cqw;color:var(--a);left:50%;top:50%;transition:left .9s cubic-bezier(.6,0,.2,1),top .9s cubic-bezier(.6,0,.2,1),opacity .4s;pointer-events:none;filter:drop-shadow(0 0 .8cqw var(--a));z-index:5}
+#cu svg{stroke-width:1.6;fill:#06060d}
+#cu svg path{stroke-dasharray:none;animation:none}
+#cu.k::after{content:"";position:absolute;left:-1cqw;top:-1cqw;width:2.4cqw;height:2.4cqw;border:2px solid var(--a);border-radius:50%;animation:rp .7s ease-out}
+@keyframes rp{from{transform:scale(.3);opacity:1}to{transform:scale(2.2);opacity:0}}
+#pb{position:absolute;left:0;bottom:0;height:.6cqw;width:0;background:linear-gradient(90deg,#22e5ff,#b26bff,#ff4fd8);box-shadow:0 0 1.5cqw var(--a)}
+#ov{position:absolute;inset:0;background:#06060de6;display:grid;place-content:center;justify-items:center;gap:2cqw;z-index:9;cursor:pointer;text-align:center}
+#ov .play{width:13cqw;height:13cqw;border:2px solid #22e5ff;border-radius:50%;display:grid;place-items:center;color:#22e5ff;box-shadow:0 0 4cqw #22e5ff88,inset 0 0 3cqw #22e5ff33}
+#ov svg{width:5.5cqw}#ov svg path{animation:none;stroke-dasharray:none}
+#ov p{font-size:2.6cqw;font-weight:600}#ov small{font-size:1.5cqw;color:var(--mu)}
+.ctl{display:flex;gap:10px;align-items:center;color:var(--mu);font-size:14px}
+.ctl button{background:none;border:1px solid #2c2c48;color:#22e5ff;border-radius:10px;width:40px;height:40px;display:grid;place-items:center;cursor:pointer}
+.ctl button:hover,.ctl button:focus-visible{border-color:#22e5ff;box-shadow:0 0 10px #22e5ff66;outline:none}
+.ctl svg{width:20px}.ctl svg path{animation:none;stroke-dasharray:none}
+input[type=range]{flex:1;accent-color:#22e5ff}
+#st{cursor:pointer}#st.ps *{animation-play-state:paused!important}
+@media(prefers-reduced-motion:reduce){svg path{animation:none;stroke-dashoffset:0}}
+</style></head><body>
+<div id="w">
+<div id="st">
+<div class="top"><b id="lg"></b><span id="chip"></span></div>
+<div id="L"></div><div id="R"></div><div id="cu"></div><div id="pb"></div>
+<div id="ov"><div class="play" id="pl"></div><p>Crée ton site web avec ChatGPT et publie-le avec GitHub</p><small>Vidéo de 2 minutes · Clique pour lancer · Plein écran conseillé</small></div>
+</div>
+<div class="ctl"><button id="pp" title="Lecture / pause (espace)"></button><button id="rs" title="Recommencer"></button><button id="vx" title="Voix on/off"></button><input id="rg" type="range" min="0" step="0.1" value="0" aria-label="Progression"><span id="tm">0:00</span><button id="fs" title="Plein écran"></button></div>
+</div>
+<script>
+// Icônes maison : contours uniquement (aucune couleur de remplissage)
+const I={rocket:"M12 3c3 2 5 5 5 9l-2 3H9l-2-3c0-4 2-7 5-9z M9 15l-3 3 M15 15l3 3 M12 9a1.5 1.5 0 1 0 .01 0 M10 18c0 2 1 3 2 3s2-1 2-3",chat:"M4 5h16v11H10l-6 4z M8 9h8 M8 12h5",edit:"M4 20h4L19 9l-4-4L4 16z M13 7l4 4",copy:"M9 9h11v11H9z M5 15V4h10",user:"M12 12a4 4 0 1 0 .01 0 M4 21c0-4 4-6 8-6s8 2 8 6",plus:"M12 3a9 9 0 1 0 .01 0 M12 8v8 M8 12h8",folder:"M3 6h6l2 2h10v11H3z",file:"M6 3h8l5 5v13H6z M14 3v5h5 M9 14h6 M9 17h4",check:"M12 3a9 9 0 1 0 .01 0 M7.5 12.5l3 3 6-7",gear:"M12 8a4 4 0 1 0 .01 0 M12 2v3 M12 19v3 M2 12h3 M19 12h3 M5 5l2 2 M17 17l2 2 M19 5l-2 2 M7 17l-2 2",globe:"M12 3a9 9 0 1 0 .01 0 M3 12h18 M12 3c3.5 3 3.5 15 0 18 M12 3c-3.5 3-3.5 15 0 18",up:"M12 19V5 M6 11l6-6 6 6",play:"M7 4l13 8-13 8z",pause:"M8 5v14 M16 5v14",redo:"M4 12a8 8 0 1 0 3-6 M4 4v5h5",full:"M4 9V4h5 M20 9V4h-5 M4 15v5h5 M20 15v5h-5",cur:"M5 3l14 7-6 2-2 7z",vol:"M4 9v6h4l5 4V5L8 9z M16 9a4 4 0 0 1 0 6 M18.5 6.5a8 8 0 0 1 0 11",mute:"M4 9v6h4l5 4V5L8 9z M17 9l5 6 M22 9l-5 6"};
+const ic=n=>`<svg viewBox="0 0 24 24"><path pathLength="1" d="${I[n]}"/></svg>`;
+const $=id=>document.getElementById(id);
+// d=durée(s) p=section c=couleur i=icône t=titre u=url e=éléments de l'écran s=[texte, index de l'élément à cliquer (-1 = aucun)]
+const X=(d,p,c,i,t,u,e,s)=>({d,p,c,i,t,u,e,s}),C="#22e5ff",G="#b26bff";
+const S=[
+X(6,"Intro","#ff4fd8","rocket","Ton site web en 2 minutes","",[],[["ChatGPT écrit tout le code pour toi",-1],["GitHub met ton site en ligne, gratuitement",-1],["Aucune connaissance nécessaire : suis chaque clic",-1]]),
+X(8,"ChatGPT",C,"chat","Ouvre ChatGPT","chatgpt.com",[["b","Se connecter","user"],["b","S'inscrire gratuitement","plus"]],[["Ouvre ton navigateur, tape chatgpt.com dans la barre d'adresse et valide",-1],["Clique sur « Se connecter » (ou « S'inscrire gratuitement » si tu n'as pas de compte)",0],["Entre ton e-mail, clique « Continuer », puis saisis ton mot de passe",-1]]),
+X(11,"ChatGPT",C,"edit","Décris ton site","chatgpt.com",[["i","Envoyer un message à ChatGPT","Crée un site portfolio sombre dans un seul fichier index.html (HTML + CSS + JS), avec 3 sections."],["b","Envoyer","up"]],[["Clique dans la zone de texte, en bas de la page",0],["Écris ce que tu veux : style, couleurs, sections. Précise « un seul fichier index.html »",0],["Clique sur la flèche ↑ ronde, à droite, pour envoyer",1]]),
+X(12,"ChatGPT",C,"copy","Copie ou télécharge le code","chatgpt.com",[["t","<!DOCTYPE html>\n<html lang=\"fr\"> …"],["b","Copier le code","copy"],["t","✓ Copié dans le presse-papiers"],["b","Télécharger index.html","file"]],[["ChatGPT affiche le code dans un bloc noir",0],["Option A : clique « Copier le code », en haut à droite du bloc",1],["Option B : demande « Donne-moi index.html à télécharger », puis clique le lien du fichier",3],["Ne copie rien d'autre avant d'avoir collé le code sur GitHub",2]]),
+X(9,"GitHub",G,"user","Crée ton compte GitHub","github.com",[["b","Sign up","user"],["i","Email · Password · Username","toi@mail.com · ••••••••"],["b","Create account","check"],["i","Code de vérification","reçu par e-mail"]],[["Va sur github.com et clique « Sign up », en haut à droite",0],["Entre ton e-mail, un mot de passe et un nom d'utilisateur",1],["Résous le puzzle, puis clique « Create account »",2],["Saisis le code reçu par e-mail pour valider",3]]),
+X(8,"GitHub",G,"plus","Crée un dépôt","github.com",[["b","+  (en haut à droite)","plus"],["m","New repository","folder"]],[["Clique sur le « + » en haut à droite de la page",0],["Dans le menu, choisis « New repository »",1],["Un dépôt est un dossier qui contiendra ton site",-1]]),
+X(11,"GitHub",G,"folder","Configure le dépôt","github.com/new",[["i","Repository name","mon-site"],["k","Public (obligatoire en gratuit)"],["k","Add a README file"],["b","Create repository","check"]],[["Repository name : écris mon-site (sans espace ni accent)",0],["Laisse « Public » coché",1],["Coche « Add a README file »",2],["Clique le bouton vert « Create repository »",3]]),
+X(15,"GitHub",G,"file","Ajoute ton code ou fichier","github.com/toi/mon-site",[["b","Add file ▾","plus"],["m","Create new file","file"],["i","Name your file… (puis colle ton code)","index.html"],["m","Upload files","up"],["t","Glisse index.html ici ou « choose your files »"]],[["Clique « Add file »",0],["Option A (code copié) : « Create new file »",1],["Nomme-le index.html, puis colle : Ctrl+V (Mac : ⌘V)",2],["Option B (fichier téléchargé) : « Add file » puis « Upload files »",3],["Glisse index.html dans la zone, ou clique « choose your files »",4]]),
+X(8,"GitHub",G,"check","Enregistre avec un commit","github.com/toi/mon-site",[["b","Commit changes…","check"],["b","Commit changes","check"]],[["Clique le bouton vert « Commit changes… » en haut à droite",0],["Dans la fenêtre, clique encore « Commit changes »",1],["Ton fichier est maintenant dans le dépôt",-1]]),
+X(8,"GitHub",G,"gear","Ouvre les réglages","github.com/toi/mon-site",[["m","Settings (onglet en haut)","gear"],["m","Pages (menu de gauche)","globe"]],[["Clique l'onglet « Settings », en haut du dépôt",0],["Dans le menu de gauche, clique « Pages »",1],["Settings invisible ? Clique sur « … » à droite des onglets",-1]]),
+X(11,"GitHub",G,"globe","Active GitHub Pages","github.com/toi/mon-site/settings/pages",[["i","Source","Deploy from a branch"],["i","Branch","main  ·  / (root)"],["b","Save","check"]],[["Source : choisis « Deploy from a branch »",0],["Branch : sélectionne « main » puis « / (root) »",1],["Clique « Save »",2]]),
+X(8,"En ligne","#c6ff3d","rocket","Ton site est en ligne","toi.github.io/mon-site",[["t","Patiente 1 à 2 minutes, puis actualise (F5)"],["b","Visit site","globe"]],[["Attends 1 à 2 minutes, puis actualise la page avec F5",0],["Clique « Visit site » : ton adresse est toi.github.io/mon-site",1],["Envoie ce lien à qui tu veux",-1]]),
+X(5,"Terminé","#ff4fd8","check","Bravo, tu es en ligne","",[],[["Pour modifier : demande à ChatGPT, puis clique sur le crayon de index.html",-1],["Colle le nouveau code, puis « Commit changes »",-1]])
+];
+const st=$("st"),cu=$("cu");let T=0,P=0,cur=-1,lk="",last=0,a=0;const O=[];S.forEach(s=>{O.push(a);a+=s.d});const TOT=a;
+$("lg").innerHTML=ic("rocket")+"Site × IA · Tuto 2026";$("pl").innerHTML=ic("play");cu.innerHTML=ic("cur");
+$("pp").innerHTML=ic("play");$("rs").innerHTML=ic("redo");$("fs").innerHTML=ic("full");$("rg").max=TOT;
+// Voix off : synthèse vocale du navigateur (une phrase par scène, calée sur la durée)
+const V=["Crée ton site avec ChatGPT et publie-le gratuitement, en deux minutes.","Va sur chatgpt.com et connecte-toi. Pas de compte ? Inscris-toi gratuitement.","Décris ton site dans la zone de texte. Important : demande un seul fichier, index point html. Puis envoie.","Copie le code avec le bouton Copier, ou télécharge le fichier index point html. Ne copie rien d'autre avant GitHub.","Sur github.com, clique Sign up, crée ton compte et valide le code reçu par e-mail.","Clique sur le plus, puis New repository : le dossier de ton site.","Nomme le dépôt mon-site, sans espace ni accent. Laisse Public coché, c'est obligatoire. Coche README, puis Create repository.","Clique Add file. Code copié : Create new file, nomme-le index point html et colle. Fichier téléchargé : Upload files et glisse-le.","Clique Commit changes, en vert, puis confirme. Ton site est enregistré.","Ouvre l'onglet Settings, puis Pages dans le menu de gauche.","Choisis Deploy from a branch, la branche main, dossier root, puis clique Save.","Attends une à deux minutes, actualise, puis clique Visit site. Ton site est en ligne !","Bravo ! Pour modifier ton site, recolle simplement un nouveau code."];
+let vo=1;const Y=window.speechSynthesis;
+function say(i){if(!Y)return;Y.cancel();Y.resume();if(!vo||!P||!V[i])return;const u=new SpeechSynthesisUtterance(V[i]);u.lang="fr-FR";u.rate=1.05;const v=Y.getVoices().find(v=>/^fr/i.test(v.lang));if(v)u.voice=v;Y.speak(u)}
+function voix(){if(!Y)return;if(P){Y.resume();if(vo&&cur>=0&&!Y.speaking)say(cur)}else Y.pause()}
+$("vx").innerHTML=ic("vol");$("vx").onclick=()=>{vo=!vo;$("vx").innerHTML=ic(vo?"vol":"mute");if(!vo&&Y)Y.cancel();else if(P)say(cur)};
+const R=(e,j)=>{const[k,l,v]=e,i=v&&k!="i"&&k!="k"?ic(v):"";
+if(k=="i")return`<div class="e i" id="e${j}"><small>${l}</small><b>${v}</b></div>`;
+if(k=="k")return`<div class="e k" id="e${j}"><span class="bx"></span>${l}</div>`;
+if(k=="t")return`<div class="e t" id="e${j}">${l.replace(/\n/g,"<br>").replace(/</g,"&lt;")}</div>`;
+return`<div class="e ${k}" id="e${j}">${i}${l}</div>`};
+function show(i){cur=i;lk="";say(i);const s=S[i];st.style.setProperty("--a",s.c);$("chip").textContent=s.p;
+const lab=s.u?`Étape ${i} sur ${S.length-2}`:i?"C'est fini":"2 minutes, zéro code à écrire";
+$("L").style.animation="none";$("L").offsetWidth;$("L").style.animation="";$("R").style.animation="none";$("R").offsetWidth;$("R").style.animation="";
+$("L").innerHTML=`<div class="n">${lab}</div><div class="hd"><div class="bdg">${ic(s.i)}</div><h1>${s.t}</h1></div><ol>${s.s.map((x,j)=>`<li id="s${j}"><i>${j+1}</i><span>${x[0]}</span></li>`).join("")}</ol>`;
+$("R").innerHTML=s.u?`<div class="win"><div class="tb"><span></span><span></span><span></span><em>${s.u.replace(/</g,"&lt;")}</em></div><div class="bd">${s.e.map((e,j)=>R(e,j).replace(/&lt;\/?\w+&gt;/g,m=>m)).join("")}</div></div>`:`<div class="big">${ic(s.i)}</div>`}
+function upd(){let i=0;while(i<S.length-1&&T>=O[i]+S[i].d)i++;if(i!==cur)show(i);
+const s=S[i],n=s.s.length,f=Math.min(.999,Math.max(0,(T-O[i])/s.d)),k=Math.min(n-1,Math.floor(f*n));
+s.s.forEach((x,j)=>{$("s"+j).dataset.s=j<k?"d":j==k?"on":""});
+s.e.forEach((_,j)=>{const h=s.s.findIndex(x=>x[1]==j);$("e"+j).dataset.s=h<0?"":h<k?"d":h==k?"on":""});
+const tg=s.s[k][1];cu.style.opacity=s.u?1:0;
+if(s.u&&tg>=0&&lk!==i+"-"+k){lk=i+"-"+k;const r=$("e"+tg).getBoundingClientRect(),q=st.getBoundingClientRect();
+cu.style.left=(r.left-q.left+r.width*.72)/q.width*100+"%";cu.style.top=(r.top-q.top+r.height*.55)/q.height*100+"%";
+cu.classList.remove("k");setTimeout(()=>cu.classList.add("k"),950)}
+$("pb").style.width=T/TOT*100+"%";$("rg").value=T;const m=Math.floor(T);$("tm").textContent=Math.floor(m/60)+":"+String(m%60).padStart(2,"0")+" / 2:00"}
+function bt(){$("pp").innerHTML=ic(P?"pause":"play");st.classList.toggle("ps",!P)}
+function tk(t){if(P){T=Math.min(TOT,T+(t-last)/1e3);if(T>=TOT){P=0;bt()}}last=t;upd();requestAnimationFrame(tk)}
+function tog(){if(T>=TOT-.05){T=0;cur=-1}P=!P;bt();voix()}
+$("ov").onclick=e=>{e.stopPropagation();$("ov").remove();P=1;bt();say(cur)};$("pp").onclick=tog;st.onclick=tog;
+$("rs").onclick=()=>{T=0;P=1;cur=-1;bt()};$("rg").oninput=e=>{T=+e.target.value;lk=""};
+$("fs").onclick=()=>document.fullscreenElement?document.exitFullscreen():$("w").requestFullscreen&&$("w").requestFullscreen();
+addEventListener("keydown",e=>{if(e.code=="Space"&&!$("ov").isConnected){e.preventDefault();tog()}});
+requestAnimationFrame(tk);
+</script></body></html>
